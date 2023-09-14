@@ -14,13 +14,13 @@ public class Plant {
 	}
 	
 	private void randomSymbol() {
-		String[] symbolList = {"'"};
+		String[] symbolList = {"🌱"};
 		int symbolIndex = new Random().nextInt(symbolList.length);
 		plantSymbol = symbolList[symbolIndex];
 	}
-	//assigns starting x coordinate between 0 and 40
+	//assigns starting x coordinate between 0 and 30
 	private void randomX() {
-		this.x = (int) (Math.random() * 40);
+		this.x = (int) (Math.random() * 50);
 	}
 	//assigns starting size between 1 and 9
 	private void randomSize() {

@@ -95,15 +95,15 @@ public class Creature {
 		int speciesIndex = new Random().nextInt(speciesList.length);
 		species = speciesList[speciesIndex];
 		if (species.equalsIgnoreCase("Rabbit")) {
-			symbol = "r";
+			symbol = "🐇";
 		} else {
 			symbol = "?";
 		}
 	}
 
-	// assigns starting x position between 0 and 40
+	// assigns starting x position between 0 and 30
 	private void randomX() {
-		this.x = (int) (Math.random() * 40);
+		this.x = (int) (Math.random() * 50);
 	}
 
 	// assigns starting y position between 0 and 15
