@@ -3,10 +3,10 @@ import java.util.Random;
 public class Creature {
 	private String species;
 	private String symbol;
-	protected int hunger;
-	protected int thirst;
-	protected int x;
-	protected int y;
+	private int hunger;
+	private int thirst;
+	private int x;
+	private int y;
 
 	public Creature() {
 		randomSpecies();
@@ -15,7 +15,7 @@ public class Creature {
 		randomHunger();
 		randomThirst();
 	}
-	
+
 	public Creature(String species, int hunger, int thirst, int x, int y) {
 		super();
 		this.species = species;
@@ -33,6 +33,7 @@ public class Creature {
 		this.x = x;
 		this.y = y;
 	}
+
 	public void moveCreature() {
 		int direction = randomDirection();
 		int newX = x;
@@ -52,8 +53,18 @@ public class Creature {
 		}
 	}
 
+	public void updateHunger() {
+		int newHunger = hunger + 1;
+		hunger = newHunger;
+	}
+
+	public void updateThirst() {
+		int newThirst = thirst + 1;
+		thirst = newThirst;
+	}
+
 	private boolean withinBounds(int newX, int newY) {
-		return newX > 0 && newX < 40 && newY > 0 && newY < 15;
+		return newX > 0 && newX < 30 && newY > 0 && newY < 10;
 	}
 
 	private int randomDirection() {
@@ -137,22 +148,24 @@ public class Creature {
 
 	// assigns starting x position between 0 and 30
 	private void randomX() {
-		this.x = (int) (Math.random() * 50);
+		this.x = (int) (Math.random() * 30);
 	}
 
-	// assigns starting y position between 0 and 15
+	// assigns starting y position between 0 and 10
 	private void randomY() {
-		this.y = (int) (Math.random() * 15);
+		this.y = (int) (Math.random() * 10);
 	}
 
-	// assigns starting hunger level between 0 and 20
+	// assigns starting hunger level between 0 and 19, with 20 the maximum hunger
+	// level possible before the creature dies.
 	private void randomHunger() {
-		this.hunger = (int) (Math.random() * 20);
+		this.hunger = (int) (Math.random() * 19);
 	}
 
-	// assigns starting thirst level between 0 and 20
+	// assigns starting thirst level between 0 and 19, with 20 the maximum thirst
+	// level possible before the creature dies.
 	private void randomThirst() {
-		this.thirst = (int) (Math.random() * 20);
+		this.thirst = (int) (Math.random() * 19);
 	}
 
 	@Override

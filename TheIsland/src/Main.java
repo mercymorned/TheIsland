@@ -18,8 +18,9 @@ import java.util.List;
  */
 
 public class Main {
-	private static int islandHeight = 15;
-	private static int islandWidth = 50;
+	// selected 10 x 30 as standard island size because it displays well
+	private static int islandHeight = 10;
+	private static int islandWidth = 30;
 	private List<Creature> creatures = new ArrayList<>();
 	private List<Creature> creatures2 = new ArrayList<>();
 	private List<Plant> plants = new ArrayList<>();
@@ -36,12 +37,12 @@ public class Main {
 	public Main() {
 
 		// add some rabbits on start to first island
-		Creature rabbit1 = new Creature ("rabbit", 2, 5, 10, 10);
+		Creature rabbit1 = new Creature("rabbit", 2, 5, 10, 10);
 		creatures.add(rabbit1);
-		Creature rabbit2 = new Creature ("rabbit", 2, 5, 10, 10);
+		Creature rabbit2 = new Creature("rabbit", 2, 5, 10, 10);
 		creatures.add(rabbit2);
-		
-		//add randomly generated creatures
+
+		// add randomly generated creatures
 		Creature r1 = new Creature();
 		creatures.add(r1);
 		Creature r2 = new Creature();
@@ -70,9 +71,11 @@ public class Main {
 		plants.add(pw6);
 
 		// drawing initial island
-		System.out.println("The Island simulation initiated. On the first turn, the island includes the following:");
+		System.out.println("The Island simulation initiated. On the first turn, the island is inhabited by "
+				+ creatures.size() + " creatures: ");
 		for (Creature c : creatures)
 			System.out.println(c.toString());
+		System.out.println();
 		drawIsland();
 
 		// updating island for 10 turns
@@ -86,10 +89,26 @@ public class Main {
 		updateIsland();
 		updateIsland();
 
+		// removing creatures who died from hunger
+		for (int i = creatures.size() - 1; i >= 0; i--) {
+			if (creatures.get(i).getHunger() >= 20) {
+				creatures.remove(i);
+			}
+		}
+
+		// removing creatures who died from thirst
+		for (int i = creatures.size() - 1; i >= 0; i--) {
+			if (creatures.get(i).getThirst() >= 20) {
+				creatures.remove(i);
+			}
+		}
+
 		// drawing island fresh after 10 moves
-		System.out.println("The Island simulation updated. After 10 turns, the island includes the following: ");
+		System.out.println("The Island simulation updated. After 10 turns, there are " + creatures.size()
+				+ " creatures remaining: ");
 		for (Creature c : creatures)
 			System.out.println(c.toString());
+		System.out.println();
 		drawIsland();
 
 		// add some rabbits on start to second island
@@ -121,10 +140,12 @@ public class Main {
 		plants2.add(pw26);
 
 		// drawing initial second island
-		System.out.println(
-				"Second The Island simulation initiated. On the first turn, the second island includes the following:");
+		System.out
+				.println("Second The Island simulation initiated. On the first turn, the second island is inhabited by "
+						+ creatures2.size() + " creatures:");
 		for (Creature c : creatures2)
 			System.out.println(c.toString());
+		System.out.println();
 		drawSecondIsland();
 
 		// updating second island for 10 turns
@@ -140,9 +161,11 @@ public class Main {
 		updateSecondIsland();
 
 		// drawing second island fresh after 10 moves
-		System.out.println("Second The Island simulation updated. After 10 turns, the island includes the following: ");
+		System.out.println("Second The Island simulation updated. After 10 turns, there are " + creatures2.size()
+				+ " creatures remaining: ");
 		for (Creature c : creatures2)
 			System.out.println(c.toString());
+		System.out.println();
 		drawSecondIsland();
 	}
 
@@ -253,6 +276,10 @@ public class Main {
 	public void updateIsland() {
 		for (Creature c : creatures)
 			c.moveCreature();
+		for (Creature c : creatures)
+			c.updateHunger();
+		for (Creature c : creatures)
+			c.updateThirst();
 	}
 
 	/**
