@@ -15,7 +15,24 @@ public class Creature {
 		randomHunger();
 		randomThirst();
 	}
-
+	
+	public Creature(String species, int hunger, int thirst, int x, int y) {
+		super();
+		this.species = species;
+		if (species.equalsIgnoreCase("Rabbit")) {
+			symbol = "🐇";
+		} else if (species.equalsIgnoreCase("Kiwi")) {
+			symbol = "🔑🟤";
+		} else {
+			symbol = "?";
+		}
+		this.symbol = symbol;
+		this.symbol = symbol;
+		this.hunger = hunger;
+		this.thirst = thirst;
+		this.x = x;
+		this.y = y;
+	}
 	public void moveCreature() {
 		int direction = randomDirection();
 		int newX = x;
@@ -56,6 +73,14 @@ public class Creature {
 	}
 
 	public void setSymbol(String symbol) {
+		species = this.species;
+		if (species.equalsIgnoreCase("Rabbit")) {
+			symbol = "🐇";
+		} else if (species.equalsIgnoreCase("Kiwi")) {
+			symbol = "🔑🟤";
+		} else {
+			symbol = "?";
+		}
 		this.symbol = symbol;
 	}
 
@@ -91,12 +116,20 @@ public class Creature {
 		this.y = y;
 	}
 
+	/*
+	 * Species symbols are String instead of char so that you can use emoji as
+	 * symbols, but it does throw off the display of the island since they take
+	 * multiple spaces. I decided it didn't matter so much for this exercise and
+	 * wanted to make it fun.
+	 */
 	private void randomSpecies() {
-		String[] speciesList = { "Rabbit" };
+		String[] speciesList = { "Rabbit", "Kiwi" };
 		int speciesIndex = new Random().nextInt(speciesList.length);
 		species = speciesList[speciesIndex];
 		if (species.equalsIgnoreCase("Rabbit")) {
 			symbol = "🐇";
+		} else if (species.equalsIgnoreCase("Kiwi")) {
+			symbol = "🔑🟤";
 		} else {
 			symbol = "?";
 		}

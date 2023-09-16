@@ -36,6 +36,12 @@ public class Main {
 	public Main() {
 
 		// add some rabbits on start to first island
+		Creature rabbit1 = new Creature ("rabbit", 2, 5, 10, 10);
+		creatures.add(rabbit1);
+		Creature rabbit2 = new Creature ("rabbit", 2, 5, 10, 10);
+		creatures.add(rabbit2);
+		
+		//add randomly generated creatures
 		Creature r1 = new Creature();
 		creatures.add(r1);
 		Creature r2 = new Creature();
@@ -85,7 +91,7 @@ public class Main {
 		for (Creature c : creatures)
 			System.out.println(c.toString());
 		drawIsland();
-		
+
 		// add some rabbits on start to second island
 		Creature r21 = new Creature();
 		creatures2.add(r21);
@@ -113,10 +119,11 @@ public class Main {
 		plants2.add(pw25);
 		Plant pw26 = new Plant();
 		plants2.add(pw26);
-		
+
 		// drawing initial second island
-		System.out.println("Second The Island simulation initiated. On the first turn, the second island includes the following:");
-		for (Creature c : creatures)
+		System.out.println(
+				"Second The Island simulation initiated. On the first turn, the second island includes the following:");
+		for (Creature c : creatures2)
 			System.out.println(c.toString());
 		drawSecondIsland();
 
@@ -133,12 +140,11 @@ public class Main {
 		updateSecondIsland();
 
 		// drawing second island fresh after 10 moves
-		System.out.println("The Island simulation updated. After 10 turns, the island includes the following: ");
-		for (Creature c : creatures)
+		System.out.println("Second The Island simulation updated. After 10 turns, the island includes the following: ");
+		for (Creature c : creatures2)
 			System.out.println(c.toString());
 		drawSecondIsland();
 	}
-	
 
 	/**
 	 * This method reads the object data from lists of creatures and plants, then
@@ -188,7 +194,22 @@ public class Main {
 			System.out.print('-');
 		System.out.println('+');
 	}
-	
+
+	/**
+	 * This method creates a second island in the simulation alongside the first.
+	 * The method reads the object data from different lists of creatures and plants
+	 * than the first drawIsland method, then displays those objects visually in the
+	 * console.
+	 * 
+	 * @param islandWidth  This is the width of the island in pixels, as displayed
+	 *                     in the console. The width has been set to a standard size
+	 *                     used for all islands created with this program.
+	 * @param islandHeight This is the height of the island in pixels, as displayed
+	 *                     in the console. The width has been set to a standard size
+	 *                     for all islands created by this program.
+	 * @param x            This is the x coordinate where the object will be drawn.
+	 * @param y            This is the y coordinate where the object will be drawn.
+	 */
 	public void drawSecondIsland() {
 		System.out.print('+');
 		for (int i = 0; i < islandWidth; i++)
@@ -233,7 +254,11 @@ public class Main {
 		for (Creature c : creatures)
 			c.moveCreature();
 	}
-	
+
+	/**
+	 * This method tells the second island to progress to the next turn, by moving
+	 * creatures around the second island.
+	 */
 	public void updateSecondIsland() {
 		for (Creature c : creatures2)
 			c.moveCreature();
