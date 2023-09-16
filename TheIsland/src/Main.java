@@ -21,7 +21,9 @@ public class Main {
 	private static int islandHeight = 15;
 	private static int islandWidth = 50;
 	private List<Creature> creatures = new ArrayList<>();
+	private List<Creature> creatures2 = new ArrayList<>();
 	private List<Plant> plants = new ArrayList<>();
+	private List<Plant> plants2 = new ArrayList<>();
 
 	/**
 	 * Creates a single new island of standard width and height for simulation,
@@ -33,7 +35,7 @@ public class Main {
 	 */
 	public Main() {
 
-		// add some rabbits on start
+		// add some rabbits on start to first island
 		Creature r1 = new Creature();
 		creatures.add(r1);
 		Creature r2 = new Creature();
@@ -62,6 +64,9 @@ public class Main {
 		plants.add(pw6);
 
 		// drawing initial island
+		System.out.println("The Island simulation initiated. On the first turn, the island includes the following:");
+		for (Creature c : creatures)
+			System.out.println(c.toString());
 		drawIsland();
 
 		// updating island for 10 turns
@@ -75,9 +80,65 @@ public class Main {
 		updateIsland();
 		updateIsland();
 
-		// drawing new island after 10 moves
+		// drawing island fresh after 10 moves
+		System.out.println("The Island simulation updated. After 10 turns, the island includes the following: ");
+		for (Creature c : creatures)
+			System.out.println(c.toString());
 		drawIsland();
+		
+		// add some rabbits on start to second island
+		Creature r21 = new Creature();
+		creatures2.add(r21);
+		Creature r22 = new Creature();
+		creatures2.add(r22);
+		Creature r23 = new Creature();
+		creatures2.add(r23);
+		Creature r24 = new Creature();
+		creatures2.add(r24);
+		Creature r25 = new Creature();
+		creatures2.add(r25);
+		Creature r26 = new Creature();
+		creatures2.add(r26);
+
+		// add plants on start
+		Plant pw21 = new Plant();
+		plants2.add(pw21);
+		Plant pw22 = new Plant();
+		plants2.add(pw22);
+		Plant pw23 = new Plant();
+		plants2.add(pw23);
+		Plant pw24 = new Plant();
+		plants2.add(pw24);
+		Plant pw25 = new Plant();
+		plants2.add(pw25);
+		Plant pw26 = new Plant();
+		plants2.add(pw26);
+		
+		// drawing initial second island
+		System.out.println("Second The Island simulation initiated. On the first turn, the second island includes the following:");
+		for (Creature c : creatures)
+			System.out.println(c.toString());
+		drawSecondIsland();
+
+		// updating second island for 10 turns
+		updateSecondIsland();
+		updateSecondIsland();
+		updateSecondIsland();
+		updateSecondIsland();
+		updateSecondIsland();
+		updateSecondIsland();
+		updateSecondIsland();
+		updateSecondIsland();
+		updateSecondIsland();
+		updateSecondIsland();
+
+		// drawing second island fresh after 10 moves
+		System.out.println("The Island simulation updated. After 10 turns, the island includes the following: ");
+		for (Creature c : creatures)
+			System.out.println(c.toString());
+		drawSecondIsland();
 	}
+	
 
 	/**
 	 * This method reads the object data from lists of creatures and plants, then
@@ -127,6 +188,42 @@ public class Main {
 			System.out.print('-');
 		System.out.println('+');
 	}
+	
+	public void drawSecondIsland() {
+		System.out.print('+');
+		for (int i = 0; i < islandWidth; i++)
+			System.out.print('-');
+		System.out.println('+');
+		for (int y = 0; y < islandHeight; y++) {
+			System.out.print('|');
+			for (int x = 0; x < islandWidth; x++) {
+				int i;
+				for (i = 0; i < plants2.size(); i++) {
+					Plant p = plants2.get(i);
+					if (p.getX() == x && p.getY() == y) {
+						System.out.print(p.getPlantSymbol());
+						break;
+					}
+				}
+
+				for (i = 0; i < creatures2.size(); i++) {
+					Creature c = creatures2.get(i);
+					if (c.getX() == x && c.getY() == y) {
+						System.out.print(c.getSymbol());
+						break;
+					}
+				}
+
+				if (i == creatures2.size())
+					System.out.print(' ');
+			}
+			System.out.println('|');
+		}
+		System.out.print('+');
+		for (int i = 0; i < islandWidth; i++)
+			System.out.print('-');
+		System.out.println('+');
+	}
 
 	/**
 	 * This method tells the island to progress to the next turn, by moving
@@ -134,6 +231,11 @@ public class Main {
 	 */
 	public void updateIsland() {
 		for (Creature c : creatures)
+			c.moveCreature();
+	}
+	
+	public void updateSecondIsland() {
+		for (Creature c : creatures2)
 			c.moveCreature();
 	}
 

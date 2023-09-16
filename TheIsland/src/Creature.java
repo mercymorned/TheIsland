@@ -15,7 +15,7 @@ public class Creature {
 		randomHunger();
 		randomThirst();
 	}
-	
+
 	public void moveCreature() {
 		int direction = randomDirection();
 		int newX = x;
@@ -34,7 +34,7 @@ public class Creature {
 			y = newY;
 		}
 	}
-	
+
 	private boolean withinBounds(int newX, int newY) {
 		return newX > 0 && newX < 40 && newY > 0 && newY < 15;
 	}
@@ -42,6 +42,7 @@ public class Creature {
 	private int randomDirection() {
 		return (int) (Math.random() * 4);
 	}
+
 	public String getSpecies() {
 		return species;
 	}
@@ -119,6 +120,12 @@ public class Creature {
 	// assigns starting thirst level between 0 and 20
 	private void randomThirst() {
 		this.thirst = (int) (Math.random() * 20);
+	}
+
+	@Override
+	public String toString() {
+		return "Creature [ species = " + species + ", symbol = " + symbol + ", x = " + x + ", y = " + y + ", hunger = "
+				+ hunger + ", thirst = " + thirst + " ]";
 	}
 
 }
