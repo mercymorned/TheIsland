@@ -1,5 +1,20 @@
 import java.util.Random;
 
+/**
+ * The Creature class defines what a creature is within The Island program.
+ * 
+ * @param species the creature's species
+ * @param symbol  the symbol that will be printed in the console to signify that
+ *                creature, based on the creature's species
+ * @param hunger  the creature's hunger level on a scale of 0 (not hungry) to 20
+ *                (starving). A creature whose hunger level reaches 20 will die
+ *                of hunger and be removed from the island.
+ * @param thirst  the creature's thirst level on a scale from 0 (not thirsty) to
+ *                20 (severe dehydration). A creature whose thirst level reaches
+ *                20 will die of thirst and be removed from the island.
+ * @param x the x position of the creature on the island
+ * @param y the y position of the creature on the island
+ */
 public class Creature {
 	private String species;
 	private String symbol;

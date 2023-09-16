@@ -111,7 +111,7 @@ public class Main {
 		System.out.println();
 		drawIsland();
 
-		// add some rabbits on start to second island
+		// add some creatures on start to second island
 		Creature r21 = new Creature();
 		creatures2.add(r21);
 		Creature r22 = new Creature();
@@ -271,7 +271,8 @@ public class Main {
 
 	/**
 	 * This method tells the island to progress to the next turn, by moving
-	 * creatures around the island.
+	 * creatures around the island. Each turn increases a creature's thirst and
+	 * hunger levels by 1.
 	 */
 	public void updateIsland() {
 		for (Creature c : creatures)
@@ -284,7 +285,7 @@ public class Main {
 
 	/**
 	 * This method tells the second island to progress to the next turn, by moving
-	 * creatures around the second island.
+	 * creatures around the second island and updating their hunger and thirst levels.
 	 */
 	public void updateSecondIsland() {
 		for (Creature c : creatures2)
@@ -293,8 +294,7 @@ public class Main {
 
 	/**
 	 * The main method tells the program to initialize and run an island simulator
-	 * program. If there should be more than one island, additional islands may be
-	 * initalized here.
+	 * program.
 	 */
 	public static void main(String[] args) {
 		new Main();
