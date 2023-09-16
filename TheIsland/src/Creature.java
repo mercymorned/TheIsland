@@ -14,14 +14,10 @@ public class Creature {
 	private int y;
 
 	/**
-	 * Main constructor method that contains necessary information about a creature
-	 * within The Island simulation.
+	 * Main constructor method that contains necessary information to display a
+	 * Creature within The Island simulation.
 	 * 
 	 * @param species the type of creature
-	 * @param symbol  the symbol that will be printed in the console to signify that
-	 *                creature, based on the creature's species. The symbol field is
-	 *                not included in the constructor method, as it is automatically
-	 *                generated based on the creature's species.
 	 * @param hunger  the creature's hunger level on a scale of 0 (not hungry) to 20
 	 *                (starving). A creature whose hunger level reaches 20 will die
 	 *                of hunger and be removed from the island.

@@ -12,6 +12,9 @@ public class Plant {
 	private int size;
 
 	/**
+	 * Main constructor method that contains necessary information to display a
+	 * Plant within The Island simulation.
+	 * 
 	 * @param plantSpecies the type of plant
 	 * @param x            the x position of the plant on the island
 	 * @param y            the y position of the plant on the island
